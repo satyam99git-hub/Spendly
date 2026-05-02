@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Terms and Conditions — Spendly{% endblock %}
+
+{% block content %}
+
+<section class="legal-hero">
+    <div class="legal-hero-inner">
+        <p class="legal-label">Legal</p>
+        <h1 class="legal-title">Terms and Conditions</h1>
+        <p class="legal-meta">Last updated: <strong>[Date]</strong> &nbsp;·&nbsp; Effective: <strong>[Date]</strong></p>
+    </div>
+</section>
+
+<section class="legal-body">
+    <div class="legal-layout">
+
+        <nav class="legal-toc">
+            <p class="toc-heading">On this page</p>
+            <ol class="toc-list">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#definitions">Definitions</a></li>
+                <li><a href="#acceptance">Acceptance of Terms</a></li>
+                <li><a href="#responsibilities">User Responsibilities</a></li>
+                <li><a href="#ip">Intellectual Property</a></li>
+                <li><a href="#prohibited">Prohibited Activities</a></li>
+                <li><a href="#liability">Limitation of Liability</a></li>
+                <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+                <li><a href="#third-party">Third-Party Links</a></li>
+                <li><a href="#termination">Termination</a></li>
+                <li><a href="#governing-law">Governing Law</a></li>
+                <li><a href="#changes">Changes to Terms</a></li>
+                <li><a href="#contact">Contact Information</a></li>
+            </ol>
+        </nav>
+
+        <article class="legal-article">
+
+            <div class="legal-section" id="introduction">
+                <h2>1. Introduction</h2>
+                <p>
+                    Welcome to <strong>[Company Name]</strong> ("<strong>Company</strong>", "<strong>we</strong>",
+                    "<strong>us</strong>", or "<strong>our</strong>"). These Terms and Conditions govern your access
+                    to and use of our website located at <strong>[Website URL]</strong> and any related services,
+                    features, content, or applications offered by [Company Name] (collectively, the
+                    "<strong>Service</strong>").
+                </p>
+                <p>
+                    Please read these Terms carefully before using the Service. By accessing or using any part of
+                    the Service, you agree to be bound by these Terms. If you do not agree to all of the Terms,
+                    you may not access or use the Service.
+                </p>
+            </div>
+
+            <div class="legal-section" id="definitions">
+                <h2>2. Definitions</h2>
+                <p>For the purposes of these Terms and Conditions:</p>
+                <ul>
+                    <li><strong>"Account"</strong> means a unique account created for you to access our Service.</li>
+                    <li><strong>"Company"</strong> refers to [Company Name] and its affiliates, officers, employees, agents, and licensors.</li>
+                    <li><strong>"Content"</strong> means any information, text, graphics, data, or other material that you upload, submit, or otherwise make available through the Service.</li>
+                    <li><strong>"Service"</strong> refers to the website and all features, tools, and resources accessible at [Website URL].</li>
+                    <li><strong>"User"</strong> means any individual or entity that accesses or uses the Service.</li>
+                    <li><strong>"You"</strong> means the individual accessing or using the Service, or the company or legal entity on behalf of which such individual accesses or uses the Service.</li>
+                </ul>
+            </div>
+
+            <div class="legal-section" id="acceptance">
+                <h2>3. Acceptance of Terms</h2>
+                <p>
+                    By registering for an account, accessing the Service, or clicking "I agree" (or any similar
+                    acknowledgement), you confirm that:
+                </p>
+                <ul>
+                    <li>You are at least 18 years of age, or the age of majority in your jurisdiction.</li>
+                    <li>You have the legal authority and capacity to enter into a binding agreement.</li>
+                    <li>You have read, understood, and agree to be bound by these Terms and our
+                        <a href="{{ url_for('privacy') }}">Privacy Policy</a>.</li>
+                    <li>Your use of the Service complies with all applicable laws and regulations.</li>
+                </ul>
+                <p>
+                    If you are accepting these Terms on behalf of an organization, you represent and warrant that
+                    you have the authority to bind that organization to these Terms.
+                </p>
+            </div>
+
+            <div class="legal-section" id="responsibilities">
+                <h2>4. User Responsibilities</h2>
+                <p>As a user of the Service, you are solely responsible for:</p>
+                <ul>
+                    <li>Maintaining the confidentiality of your account credentials and for all activities that occur under your account.</li>
+                    <li>Providing accurate, current, and complete information during registration and keeping it up to date.</li>
+                    <li>Notifying us immediately at <strong>[Email Address]</strong> upon becoming aware of any unauthorized use of your account or any other breach of security.</li>
+                    <li>Ensuring that your Content does not violate any applicable laws, regulations, or third-party rights.</li>
+                    <li>Any costs or damages arising from your failure to comply with these responsibilities.</li>
+                </ul>
+            </div>
+
+            <div class="legal-section" id="ip">
+                <h2>5. Intellectual Property Rights</h2>
+                <p>
+                    The Service and its original content (excluding Content provided by Users), features, and
+                    functionality are and will remain the exclusive property of [Company Name] and its licensors.
+                    This includes, without limitation, all text, graphics, logos, icons, images, software, and
+                    the compilation thereof.
+                </p>
+                <p>
+                    You are granted a limited, non-exclusive, non-transferable, and revocable license to access
+                    and use the Service strictly in accordance with these Terms. You may not reproduce, distribute,
+                    modify, create derivative works of, publicly display, publicly perform, republish, download,
+                    store, or transmit any material from our Service without our prior written consent.
+                </p>
+                <p>
+                    By submitting Content to the Service, you grant [Company Name] a worldwide, royalty-free,
+                    non-exclusive license to use, reproduce, adapt, and display such Content solely for the purpose
+                    of providing and improving the Service.
+                </p>
+            </div>
+
+            <div class="legal-section" id="prohibited">
+                <h2>6. Prohibited Activities</h2>
+                <p>You agree not to engage in any of the following activities:</p>
+                <ul>
+                    <li>Using the Service for any unlawful purpose or in violation of any local, national, or international law or regulation.</li>
+                    <li>Attempting to gain unauthorized access to any portion or feature of the Service, or any other systems or networks connected to the Service.</li>
+                    <li>Transmitting any unsolicited or unauthorized advertising, promotional materials, spam, or any other form of solicitation.</li>
+                    <li>Uploading, posting, or transmitting any Content that is harmful, offensive, defamatory, obscene, or otherwise objectionable.</li>
+                    <li>Impersonating any person or entity, or falsely stating or misrepresenting your affiliation with a person or entity.</li>
+                    <li>Using any automated means, including bots, scrapers, or spiders, to access, collect, or index any content from the Service.</li>
+                    <li>Engaging in any conduct that restricts or inhibits any other user from using or enjoying the Service.</li>
+                    <li>Introducing viruses, trojans, worms, logic bombs, or other malicious or technologically harmful material.</li>
+                </ul>
+                <p>
+                    We reserve the right to terminate your access to the Service, without notice or liability, for
+                    any violation of these prohibitions.
+                </p>
+            </div>
+
+            <div class="legal-section" id="liability">
+                <h2>7. Limitation of Liability</h2>
+                <p>
+                    To the maximum extent permitted by applicable law, in no event shall [Company Name], its
+                    affiliates, directors, employees, agents, licensors, or service providers be liable for any
+                    indirect, incidental, special, consequential, or punitive damages, including without limitation:
+                </p>
+                <ul>
+                    <li>Loss of profits, revenue, data, or goodwill.</li>
+                    <li>Cost of substitute goods or services.</li>
+                    <li>Any damages resulting from your access to or use of (or inability to access or use) the Service.</li>
+                    <li>Any conduct or content of any third party on the Service.</li>
+                </ul>
+                <p>
+                    In jurisdictions that do not allow the exclusion or limitation of incidental or consequential
+                    damages, our liability shall be limited to the greatest extent permitted by law. In no event
+                    shall our aggregate liability exceed the amount you paid us, if any, in the twelve (12) months
+                    prior to the event giving rise to the claim.
+                </p>
+            </div>
+
+            <div class="legal-section" id="disclaimer">
+                <h2>8. Disclaimer of Warranties</h2>
+                <p>
+                    The Service is provided on an "<strong>AS IS</strong>" and "<strong>AS AVAILABLE</strong>"
+                    basis, without any warranties of any kind, either express or implied. [Company Name] expressly
+                    disclaims all warranties, including but not limited to:
+                </p>
+                <ul>
+                    <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+                    <li>Warranties that the Service will be uninterrupted, timely, secure, or error-free.</li>
+                    <li>Warranties regarding the accuracy, reliability, or completeness of any information provided through the Service.</li>
+                    <li>Warranties that defects, if any, will be corrected.</li>
+                </ul>
+                <p>
+                    Some jurisdictions do not allow the exclusion of certain warranties. In such cases, the above
+                    exclusions shall apply to the fullest extent permitted by applicable law.
+                </p>
+            </div>
+
+            <div class="legal-section" id="third-party">
+                <h2>9. Third-Party Links</h2>
+                <p>
+                    The Service may contain links to third-party websites, services, or resources that are not
+                    owned or controlled by [Company Name]. We have no control over, and assume no responsibility
+                    for, the content, privacy policies, or practices of any third-party websites or services.
+                </p>
+                <p>
+                    We strongly advise you to read the terms and privacy policy of every third-party website you
+                    visit. Your use of any linked website is solely at your own risk and subject to the terms and
+                    conditions of that website.
+                </p>
+            </div>
+
+            <div class="legal-section" id="termination">
+                <h2>10. Termination</h2>
+                <p>
+                    We may suspend or terminate your account and access to the Service immediately, without prior
+                    notice or liability, for any reason, including if you breach any provision of these Terms.
+                </p>
+                <p>
+                    Upon termination, your right to use the Service will immediately cease. All provisions of
+                    these Terms that by their nature should survive termination shall survive, including ownership
+                    provisions, warranty disclaimers, indemnity, and limitations of liability.
+                </p>
+                <p>
+                    You may terminate your account at any time by contacting us at <strong>[Email Address]</strong>
+                    or using the account deletion option within your account settings.
+                </p>
+            </div>
+
+            <div class="legal-section" id="governing-law">
+                <h2>11. Governing Law</h2>
+                <p>
+                    These Terms shall be governed by and construed in accordance with the laws of
+                    <strong>[Jurisdiction]</strong>, without regard to its conflict of law provisions.
+                </p>
+                <p>
+                    Any disputes arising out of or relating to these Terms or the Service shall be subject to the
+                    exclusive jurisdiction of the courts located in <strong>[Jurisdiction]</strong>. If you access
+                    the Service from a location outside [Jurisdiction], you are responsible for compliance with
+                    all applicable local laws.
+                </p>
+            </div>
+
+            <div class="legal-section" id="changes">
+                <h2>12. Changes to Terms</h2>
+                <p>
+                    We reserve the right to modify or replace these Terms at any time at our sole discretion. When
+                    we make material changes, we will notify you by updating the "Last updated" date at the top of
+                    this page and, where appropriate, by sending a notification to the email address associated
+                    with your account.
+                </p>
+                <p>
+                    Your continued use of the Service after any changes are posted constitutes your acceptance of
+                    the new Terms. If you do not agree to the revised Terms, you must stop using the Service
+                    immediately.
+                </p>
+                <p>
+                    We encourage you to review these Terms periodically to stay informed of any updates.
+                </p>
+            </div>
+
+            <div class="legal-section" id="contact">
+                <h2>13. Contact Information</h2>
+                <p>
+                    If you have any questions, concerns, or requests regarding these Terms and Conditions, please
+                    contact us:
+                </p>
+                <div class="legal-contact-card">
+                    <p><strong>[Company Name]</strong></p>
+                    <p>Email: <a href="mailto:[Email Address]">[Email Address]</a></p>
+                    <p>Website: <a href="[Website URL]">[Website URL]</a></p>
+                </div>
+                <p>
+                    We will make every effort to respond to your inquiry within 5–7 business days.
+                </p>
+            </div>
+
+        </article>
+    </div>
+</section>
+
+{% endblock %}
