@@ -1,0 +1,11 @@
+╭─── Claude Code v2.1.126 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                Welcome back Hemali!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ What's new              │
+│                        ▘▘ ▝▝                       │ The `/model` picker no… │
+│      Sonnet 4.6 · Claude Pro ·                     │ - Added `claude projec… │
+│      eshopvisualmitra@gmail.com's Organization     │ `--dangerously-skip-pe… │
+│   ~/Satyam/Claude/expense-tracker/expense-tracker  │ /release-notes for more │
+╰──────────────────────────────────────────────────────────────────────────────╯
