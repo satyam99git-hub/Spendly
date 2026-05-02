@@ -29,7 +29,12 @@ def terms():
 
 @app.route("/privacy")
 def privacy():
-    return render_template("privacy.html")
+    return render_template("privacy.html",
+        app_name="Spendly",
+        company_name="[Company Name]",
+        email="[Email Address]",
+        jurisdiction="[Jurisdiction]"
+    )
 
 
 # ------------------------------------------------------------------ #
