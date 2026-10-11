@@ -1,0 +1,48 @@
+# Flutter / Dart -------------------------------------------------------------
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# pubspec.lock IS COMMITTED — deliberately not listed above.
+# Flutter's default template ignores it, but that rule is for reusable packages.
+# This is an application: the lockfile is what makes a build reproducible, and an
+# officer-facing release must be buildable from the exact tree that was tested.
+
+# Android ---------------------------------------------------------------------
+android/.gradle/
+android/captures/
+android/local.properties
+android/.cxx/
+android/app/debug/
+android/app/profile/
+android/app/release/
+*.iml
+*.jks
+*.keystore
+
+# Signing and service credentials — NEVER COMMIT.
+# key.properties holds the release keystore password; google-services.json holds
+# the OAuth client config. Both are injected by CI from secrets.
+android/key.properties
+android/app/google-services.json
+
+# Environment -----------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# Tooling ---------------------------------------------------------------------
+.idea/
+.vscode/
+*.log
+coverage/
+
+# Golden test failure artefacts. The goldens themselves under test/golden/images/
+# ARE committed — they are the reference. Only the diff output from a failed run
+# is noise.
+**/failures/

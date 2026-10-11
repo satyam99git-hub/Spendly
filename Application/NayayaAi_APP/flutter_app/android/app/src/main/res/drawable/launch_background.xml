@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  What Android paints between the app process starting and Flutter's first
+  frame — typically a few hundred milliseconds, longer on a cold start.
+
+  It was the stock `@android:color/white`, which meant every launch flashed
+  white before the navy splash appeared. The Flutter splash is already the brand
+  mark on navy; this makes the native screen the same thing, so the handover is
+  invisible and the app appears to open straight into its own splash.
+
+  The emblem here matches the crest SplashBrand draws, at the same 96dp.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/launch_background" />
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/nyayaai_logo" />
+    </item>
+</layer-list>

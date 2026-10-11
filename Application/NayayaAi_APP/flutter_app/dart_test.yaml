@@ -1,0 +1,25 @@
+# Test tags.
+#
+# Declaring them here is what stops `flutter test` warning about an unrecognised
+# tag, and it is the single place that records which suites are not part of an
+# ordinary run.
+tags:
+  # Golden snapshots. Font rendering differs between platforms and Flutter
+  # versions, so these are only meaningful on the machine that generated them.
+  # Regenerate with: flutter test --tags golden --update-goldens
+  golden:
+
+  # Hits a REAL NyayaAI server over the network.
+  #
+  # The suite lives in `test_live/`, OUTSIDE `test/`, which is what keeps it out
+  # of a bare `flutter test` -- it needs the Flask app and MongoDB up, and it
+  # writes to the users collection. Tagging alone would not do that: config
+  # `exclude_tags` combines with a command-line `--tags` rather than being
+  # overridden by it, so an excluded tag cannot be opted back into.
+  #
+  #   flutter test test_live/ --dart-define=API_BASE_URL=http://127.0.0.1:5000
+  #
+  # See test_live/auth_live_test.dart for what it does and how to clean up.
+  live:
+    # A round trip to a cold Flask dev server is far slower than a widget pump.
+    timeout: 2x

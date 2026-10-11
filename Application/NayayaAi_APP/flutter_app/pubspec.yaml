@@ -1,0 +1,160 @@
+name: nayaya_app
+description: NayayaAi officer console — Android client.
+publish_to: "none"
+
+# Keep in step with the build label shown on the sign-in footer. That value is
+# currently passed to StationFooter as a literal; swap it for package_info_plus
+# once there is a second place that needs the version, so the two cannot drift.
+version: 2.4.0+1
+
+environment:
+  sdk: ^3.5.0
+  # 3.27 is the floor for Color.withValues(), used across theme/.
+  # On an older SDK, replace those calls with the deprecated withOpacity().
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management. Present now because LoginScreen is already a
+  # ConsumerStatefulWidget, so wiring AuthController is a body change.
+  flutter_riverpod: ^2.5.1
+
+  # --- added with Feature 1 (authentication) ---------------------------------
+
+  # HTTP. Chosen over package:http for interceptors, which is what makes the
+  # cookie/session and error-mapping layers possible without touching call sites.
+  dio: ^5.7.0
+
+  # The NyayaAI server authenticates with a Flask session cookie, not a bearer
+  # token: POST /login replies with `Set-Cookie: session=...; HttpOnly; Path=/`
+  # and every later request is authorised by sending it back. These two give Dio
+  # a cookie store that survives process death.
+  #
+  # NOTE the cookie carries no Expires/Max-Age — it is a *session* cookie, which
+  # a jar discards by default. PersistCookieJar is therefore constructed with
+  # `ignoreExpires: true` in dio_client.dart; without that flag "stay signed in"
+  # silently stops working across app restarts.
+  dio_cookie_manager: ^3.1.1
+  cookie_jar: ^4.0.8
+
+  # Declarative routing + the auth redirect that keeps signed-out users out of
+  # role screens without every screen re-checking for itself.
+  go_router: ^14.6.2
+
+  # Holds the cached profile (role, unique ID, display name) between launches.
+  # The session cookie itself lives in the jar; this is the identity shown in the
+  # UI so the app can render a signed-in shell before /api/me answers.
+  flutter_secure_storage: ^9.2.2
+
+  # Where the cookie jar writes. Required by PersistCookieJar's FileStorage.
+  path_provider: ^2.1.5
+
+  # --- added with Feature 10 (evidence locker) --------------------------------
+
+  # Camera capture and gallery pick, for the two ways a scene photo reaches the
+  # locker. Chosen over `camera` because this feature needs a picture, not a
+  # viewfinder: image_picker hands the capture to the system camera app, which
+  # is the one an officer already knows and the one that handles focus,
+  # rotation and storage permissions without us reimplementing them.
+  image_picker: ^1.1.2
+
+  # The other half of "evidence". The locker also holds PDFs, audio and
+  # documents — the server categorises all five kinds — and image_picker cannot
+  # reach them. Without this, "Add evidence" would silently mean "add a photo".
+  #
+  # 10.x is the floor, not a preference. 8.x pins its Android module to
+  # compileSdk 34, and flutter_plugin_android_lifecycle (pulled in by
+  # image_picker) requires 36 — the two together fail `assembleDebug` with
+  # "requires libraries ... to compile against version 36 or later". Downgrading
+  # this constraint breaks the Android build, not just the lockfile.
+  file_picker: ^10.0.0
+
+  # --- added with Feature 9 (FIR history) ------------------------------------
+
+  # Hands a downloaded FIR PDF to whatever the handset uses to read PDFs.
+  #
+  # The download itself is Dio writing to app-private storage, which needs no
+  # package and no permission — but a file the app cannot open is a file the
+  # officer cannot read, and Flutter has no way to render a PDF or to fire an
+  # ACTION_VIEW intent on its own.
+  #
+  # Chosen over `url_launcher` on the download URL, which would have added no
+  # dependency at all: that hands the fetch to the browser, so a 404 from
+  # `/fir/download/<no>` — the common case for records filed on another machine
+  # — surfaces as a raw JSON blob in a browser tab instead of as a sentence, and
+  # the app never learns whether the download worked. `open_filex` over
+  # `open_file`: same API, and it is the fork that is still maintained.
+  open_filex: ^4.7.0
+
+  # --- added with the Citizen portal ------------------------------------------
+
+  # `tel:` links. The website's emergency cards and its home-page strip are
+  # plain `<a href="tel:100">` anchors (citizen_dashboard.html:363-380,
+  # 672-734); a native app has no anchor to follow, and Flutter cannot fire the
+  # dialler intent on its own.
+  url_launcher: ^6.3.2
+
+  # --- added with the Lawyer portal -------------------------------------------
+
+  # The lawyer page renders every AI answer and draft with `marked.parse`
+  # (lawyer_dashboard.html:13, 1233, 1272, 1339, 1563, 1596): GitHub-flavoured
+  # Markdown with headings, lists, tables and code, styled by `.assistant-answer`
+  # (lines 117-198). `flutter_markdown_plus` is the maintained successor to the
+  # discontinued `flutter_markdown`, and parses with the same GFM extension set.
+  flutter_markdown_plus: ^1.0.12
+
+  # DELIBERATELY NOT ADDED YET — add each with the feature that first needs it:
+  #   shared_preferences                    -> theme + onboarding flags
+  #   local_auth                            -> real biometric unlock
+  #   google_sign_in                        -> Google login (excluded for now)
+  #   flutter_local_notifications           -> notifications feature
+  #   package_info_plus                     -> real build label in the footer
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # The emblem — ring and scales, keyed to transparency — which is what
+    # JusticeCrest draws on the splash and the sign-in masthead. Generated from
+    # Logo.png by tool/generate_launcher_icons.py; do not edit it by hand, it
+    # will be overwritten.
+    - assets/images/logo/emblem.png
+
+    # NOTE: this is the one file, not the `assets/images/logo/` directory, and
+    # that is deliberate. The directory also holds Logo.png — the designed
+    # lockup, and the source every launcher icon and the emblem itself are
+    # generated from. Nothing in the app loads it: it carries its own navy tile
+    # and its own "NyayaAI" wordmark, so drawing it on the splash would put a
+    # navy square on a navy screen and the wordmark twice. Declaring the
+    # directory shipped 1.1 MB of it inside every APK for nothing.
+    #
+    # It stays in the repo, unbundled, because it is the design source. Re-run
+    # the generator after changing it.
+
+  # The other asset directories are still empty, and Flutter warns on a declared
+  # directory with no files. Uncomment each as real assets land.
+  #   - assets/images/onboarding/
+  #   - assets/icons/
+  #   - assets/lottie/
+
+  # The sign-in title uses the platform serif (Noto Serif on Android) via
+  # AppTypography.serifFamily — no bundled font, no licence question. To ship a
+  # specific face, drop the .ttf files into assets/fonts/, declare the family
+  # here, and point AppTypography.serifFamily at it.
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/Inter-Regular.ttf
+  #       - asset: assets/fonts/Inter-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/Inter-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/fonts/Inter-Bold.ttf
+  #         weight: 700
