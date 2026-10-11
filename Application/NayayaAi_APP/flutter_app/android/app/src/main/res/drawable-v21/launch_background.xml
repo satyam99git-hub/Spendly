@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The API 21+ copy of the launch screen, and it must stay identical to
+  drawable/launch_background.xml — this one is what every current device
+  actually resolves, so a change made only to the other file has no effect on
+  any real handset.
+
+  It shipped as `?android:colorBackground`, which resolves through the theme and
+  therefore came out white under Theme.Light.NoTitleBar. See the other file for
+  why that is wrong here.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/launch_background" />
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/nyayaai_logo" />
+    </item>
+</layer-list>

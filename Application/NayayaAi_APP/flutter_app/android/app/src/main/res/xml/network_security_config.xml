@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  What the app is allowed to talk to in the clear.
+
+  Android has blocked plaintext HTTP by default since API 28, and this app's
+  backend is a Flask server with no TLS at all. Without a policy the release
+  build silently fails every request: `flutter run` works, the APK does not, and
+  the symptom is a connection error that looks like the server being down.
+
+  The policy is deny-by-default with two exceptions, rather than the usual
+  `android:usesCleartextTraffic="true"`. That flag permits plaintext to ANY
+  host, forever, including whatever production turns out to be — it is a
+  one-word way to ship the app's credentials over an open network.
+
+  THE TWO EXCEPTIONS ARE BOTH LOOPBACK, and that is what makes them safe: traffic
+  to them never leaves the handset.
+
+    127.0.0.1 / localhost   `adb reverse tcp:5000 tcp:5000` forwards the phone's
+                            own loopback to the development machine over USB.
+                            This is how a physical device reaches a local server
+                            without either of them being on a trusted network.
+
+    10.0.2.2                the Android emulator's alias for its host's
+                            loopback. See AppConfig.defaultBaseUrl.
+
+  A development machine's LAN address is deliberately NOT listed. It changes
+  with every network, so it would be a line in this file that is wrong more
+  often than it is right — and permitting cleartext to a routable address is
+  exactly the case this config exists to prevent. Use the adb tunnel.
+
+  WHEN THE SERVER GETS TLS: nothing here changes. `https://` is already
+  permitted everywhere by the base config.
+
+  WHEN THE SERVER IS DEPLOYED WITHOUT TLS: do not add it here. The app carries a
+  session cookie for police, judges and lawyers; over plaintext on a real
+  network that cookie is readable by anyone on the path. Terminate TLS in front
+  of Flask instead.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

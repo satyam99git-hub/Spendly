@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The name under the launcher icon.
+
+  It was the Flutter template's `nayaya_app` — the Dart package name, which is
+  an identifier, not a product name, and which spells the brand differently from
+  the logo and from every string in the app. `NyayaAI` matches the wordmark in
+  assets/images/logo/Logo.png and the splash.
+
+  A string resource rather than a literal in the manifest, because this is the
+  one piece of user-facing text Android owns and it is what a translation would
+  have to override first.
+-->
+<resources>
+    <string name="app_name">NyayaAI</string>
+</resources>

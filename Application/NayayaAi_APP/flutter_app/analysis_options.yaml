@@ -1,0 +1,24 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Missing a const is a rebuild cost, not a style opinion. Surfacing these as
+    # warnings keeps them visible in CI without failing the build.
+    prefer_const_constructors: warning
+    prefer_const_literals_to_create_immutables: warning
+    # An unawaited future in an auth flow is a real defect, not lint noise.
+    unawaited_futures: error
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_print
+    - prefer_final_locals
+    - prefer_single_quotes
+    - require_trailing_commas
+    - sort_child_properties_last
+    - unawaited_futures
+    - use_super_parameters

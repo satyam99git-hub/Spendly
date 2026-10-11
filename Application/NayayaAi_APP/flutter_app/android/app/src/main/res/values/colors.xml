@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Brand colours the ANDROID side needs. Flutter reads none of these — the app's
+  palette lives in lib/theme/app_colors.dart, and these exist only for the
+  moments before the Flutter engine has drawn anything.
+
+  TWO DIFFERENT NAVIES, on purpose:
+
+    ic_launcher_background  #0E2035  the logo's own navy, sampled from
+                                     assets/images/logo/Logo.png. The adaptive
+                                     icon's background layer has to be exactly
+                                     this or a seam appears where the generated
+                                     foreground's antialiased edges blend.
+
+    launch_background       #1D3D5C  AppColors.navy — what the Flutter splash
+                                     paints. The launch screen is handed over to
+                                     Flutter mid-animation, and any difference
+                                     here shows up as a colour jump at the
+                                     moment the engine takes over.
+
+  Keep launch_background in step with AppColors.navy, and the night variant in
+  values-night/ in step with AppColors.navyDeep.
+-->
+<resources>
+    <color name="ic_launcher_background">#0E2035</color>
+    <color name="launch_background">#1D3D5C</color>
+</resources>

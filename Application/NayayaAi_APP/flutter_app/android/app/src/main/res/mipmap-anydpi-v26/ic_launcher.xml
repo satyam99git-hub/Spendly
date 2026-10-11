@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The launcher icon on API 26+, which is every device this app targets.
+
+  Three layers, and the split is forced by how launchers draw them: `background`
+  and `foreground` are composited and then MASKED to whatever shape the launcher
+  uses — a circle on stock Android, a squircle on Samsung, a teardrop elsewhere.
+  Only the central 66.7% is guaranteed to survive.
+
+  That is why the foreground is the emblem alone, not the full NyayaAI lockup in
+  assets/images/logo/Logo.png. The wordmark in that lockup sits a few percent
+  from the bottom edge, so every one of those masks would cut it in half. The
+  full lockup is still used for the legacy icon (res/mipmap-*/ic_launcher.png),
+  which nothing masks.
+
+  `monochrome` is the themed icon on API 33+. Its alpha is the shape and the
+  system supplies the colour, so it must not carry the navy background — that is
+  a separate layer here for exactly this reason. Without it, a themed launcher
+  shrinks the whole icon inside a grey circle.
+
+  All three PNGs are generated: python3 tool/generate_launcher_icons.py
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+    <monochrome android:drawable="@mipmap/ic_launcher_monochrome" />
+</adaptive-icon>

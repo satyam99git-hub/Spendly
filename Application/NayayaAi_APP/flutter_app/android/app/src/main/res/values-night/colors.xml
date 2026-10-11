@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Dark-mode launch background. Matches AppColors.navyDeep, which is what
+  AuthHeader.backgroundFor paints behind the splash in the dark theme.
+
+  ic_launcher_background is deliberately NOT overridden here: a launcher icon
+  does not change with the system theme, and giving it a night variant would
+  make the icon two different colours on the same home screen depending on when
+  the launcher last cached it.
+-->
+<resources>
+    <color name="launch_background">#14293C</color>
+</resources>
